@@ -1,0 +1,34 @@
+node{
+    def mavenHome = tool name: 'Maven3.9.0'
+    stage('1clonecode'){
+        git "https://github.com/TariJulia/maven-web-application"
+    }
+    stage('2Test&Build'){
+        sh "${mavenHome}/bin/mvn clean package"
+    //bat "${mavenHome}/bin/mvn clean package"
+    }
+    /*
+    stage('3codeQuality'){
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+    }
+    stage('4uploadArtifacts'){
+        sh "${mavenHome}/bin/mvn deploy"
+    }
+    stage('5deploy2UAT'){
+        sh "echo 'deploy to UAT'  "
+        deploy adapters: [tomcat9(credentialsId: 'fca7ebdb-a646-4349-b4dc-d0dbd80480d0', path: '', url: 'http://54.237.217.80:8080/')], contextPath: null, war: 'target/*war'    
+    }
+    stage('6approvalGate'){
+    sh "echo 'ready for review' "
+    timeout(time:5, unit:'DAYS') {
+    input message: 'Application ready for deployment, Please review and approve'
+        }
+    }
+    stage('7deploy2Prod'){
+      sh "sleep 50"
+      deploy adapters: [tomcat9(credentialsId: 'fca7ebdb-a646-4349-b4dc-d0dbd80480d0', path: '', url: 'http://54.237.217.80:8080/')], contextPath: null, war: 'target/*war'  
+    }
+    stage('8emailNotification'){// "get pipeline syntax"
+    }
+    */
+    }
