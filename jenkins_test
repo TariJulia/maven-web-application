@@ -26,6 +26,6 @@ node{
     stage('7deploy2Prod'){
       deploy adapters: [tomcat9(credentialsId: 'fca7ebdb-a646-4349-b4dc-d0dbd80480d0', path: '', url: 'http://54.237.217.80:8080/')], contextPath: null, war: 'target/*war'  
     }
-    stage('8emailNotification'){//get pipeline syntax
+    stage('8emailNotification'){// "get pipeline syntax"
     }
     }
